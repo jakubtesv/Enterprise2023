@@ -1,0 +1,6 @@
+CREATE, UPDATE, DELETE Books
+CREATE Authors
+
+
+
+TODO: UPDATE, DELETE Authors
