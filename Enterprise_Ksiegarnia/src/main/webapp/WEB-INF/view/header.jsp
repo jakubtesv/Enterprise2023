@@ -28,6 +28,12 @@
                   <a class="nav-link" href="${pageContext.request.contextPath}/authors/list">Autorzy</a>
           </li>
       </sec:authorize>
+      <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/categories/list">Kategorie</a>
+          </li>
+      </sec:authorize>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
 

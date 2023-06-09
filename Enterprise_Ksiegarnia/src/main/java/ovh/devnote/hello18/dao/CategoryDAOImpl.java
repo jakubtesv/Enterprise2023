@@ -33,7 +33,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public void saveCategory(Kategoria kategoria) {
         Session session = sessionFactory.getCurrentSession();
         // ksiazka.setKategoria();
-        session.save(kategoria);
+        session.saveOrUpdate(kategoria);
     }
 
     @Override

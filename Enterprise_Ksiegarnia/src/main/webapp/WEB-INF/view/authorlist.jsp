@@ -17,6 +17,18 @@
                     <tr>
                         <td>${autor.imie}</td>
                         <td>${autor.nazwisko}</td>
+                        <td>
+                                  <c:url var="update" value="/authors/updateAuthor">
+                                      <c:param name="authorId" value="${autor.id}"/>
+                                  </c:url>
+                                  <a href="${update}">edytuj</a>
+                              </td>
+                              <td>
+                                  <c:url var="delete" value="/authors/deleteAuthor">
+                                       <c:param name="authorId" value="${autor.id}"/>
+                                  </c:url>
+                                  <a href="${delete}">usun</a>
+                              </td>
                     </tr>
                 </c:forEach>
             </table>

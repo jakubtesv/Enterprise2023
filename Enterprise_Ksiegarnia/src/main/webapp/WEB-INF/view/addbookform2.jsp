@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-ADD BOOK
+<h2>Dodaj ksiazke:</h2>
 <form:form action="saveBook2" modelAttribute="bookDTO" method="POST">
 
 <td><form:hidden path="id"/></td>

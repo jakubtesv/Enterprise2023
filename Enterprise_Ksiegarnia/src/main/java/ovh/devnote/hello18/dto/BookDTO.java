@@ -1,5 +1,7 @@
 package ovh.devnote.hello18.dto;
 
+import java.util.List;
+
 public class BookDTO {
     private String nazwa;
 
@@ -9,6 +11,7 @@ public class BookDTO {
     private float cena;
 
     private int kategoriaid;
+    private List<Integer> authorsid;
 
     public int getId() {
         return id;
@@ -52,4 +55,13 @@ public class BookDTO {
     public void setKategoriaid(int kategoriaid) {
         this.kategoriaid = kategoriaid;
     }
+
+    public List<Integer> getAuthorsid() {
+        return authorsid;
+    }
+
+    public void setAuthorsid(List<Integer> authorsid) {
+        this.authorsid = authorsid;
+    }
+
 }

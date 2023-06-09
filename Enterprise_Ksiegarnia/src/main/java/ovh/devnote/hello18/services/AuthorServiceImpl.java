@@ -7,6 +7,7 @@ import ovh.devnote.hello18.dao.AuthorDAO;
 import ovh.devnote.hello18.entity.Autor;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AuthorServiceImpl implements AuthorService{
@@ -15,7 +16,7 @@ public class AuthorServiceImpl implements AuthorService{
 
     @Override
     @Transactional
-    public List<Autor> getAuthor() {
+    public List<Autor> getAuthors() {
         List<Autor> authors = authorDAO.getAuthors();
         return authors;
     }
@@ -26,5 +27,24 @@ public class AuthorServiceImpl implements AuthorService{
         authorDAO.saveAuthor(autor);
 
     }
+
+    @Override
+    @Transactional
+    public Set<Autor> getAuthorsByIds(List<Integer> authorsid) {
+        return authorDAO.getAuthorsByIds(authorsid);
+    }
+
+    @Override
+    @Transactional
+    public Autor getAuthor(int id) {
+        return authorDAO.getAuthor(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAuthor(Autor author) {
+        authorDAO.deleteAuthor(author);
+    }
+
 
 }

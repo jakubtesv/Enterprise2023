@@ -5,9 +5,10 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-ADD BOOK
-<form:form action="saveAuthor" modelAttribute="autor" method="POST">
+<h2>Dodaj autora:</h2>
+<form:form action="saveAuthor" modelAttribute="author" method="POST">
 
+<td><form:hidden path="id"/></td>
     <table>
         <tbody>
         <tr>
