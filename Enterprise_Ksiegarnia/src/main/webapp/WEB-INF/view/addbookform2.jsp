@@ -1,14 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: luke
-  Date: 15.05.2019
-  Time: 00:05
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>books</title>
+    <title>Dodaj ksiazke</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -23,26 +16,26 @@
         <tbody>
 
         <tr>
-            <td><label>nazwa:</label></td>
+            <td><label>Nazwa:</label></td>
             <td><form:input path="nazwa"/></td>
         </tr>
 
         <tr>
-            <td><label>wydawnictwo:</label></td>
+            <td><label>Wydawnictwo:</label></td>
             <td><form:input path="wydawnictwo" /></td>
         </tr>
 
         <tr>
-            <td><label>cena:</label></td>
+            <td><label>Cena:</label></td>
             <td><form:input path="cena" /></td>
         </tr>
         <tr>
-            <td><label for="categories">kategoria:</label></td>
+            <td><label for="categories">Kategoria:</label></td>
             <td><form:select path="kategoriaid" id="categories"> <form:options items="${categories}" itemValue="id" itemLabel="nazwa"/></form:select></td>
         </tr>
 
         <tr>
-
+           <td><label for="authors">Autor:</label></td>
            <td>
                <form:select path="authorsid" >
                    <form:options items="${authors}" itemValue="id" itemLabel="nazwisko"/>

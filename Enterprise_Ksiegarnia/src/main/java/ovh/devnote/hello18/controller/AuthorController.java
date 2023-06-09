@@ -25,6 +25,7 @@ public class AuthorController {
     public String listCustomers(Model model)
     {
         List<Autor> autorzy = authorService.getAuthors();
+
         model.addAttribute("autorzy",autorzy);
         return "authorlist";
     }

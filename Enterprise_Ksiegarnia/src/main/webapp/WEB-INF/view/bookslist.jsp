@@ -1,14 +1,7 @@
-    <%--
-  Created by IntelliJ IDEA.
-  User: luke
-  Date: 15.05.2019
-  Time: 00:05
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>List books</title>
+    <title>Lista ksiazek</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -17,33 +10,35 @@
         <div>
             <table>
                 <tr>
-                    <th>Nazwa</th>
-                    <th>Wydawnictwo</th>
-                    <th>Cena</th>
-                    <th>Kategoria</th>
+                    <th style="padding-left: 25px">Nazwa</th>
+                    <th style="padding-left: 25px">Wydawnictwo</th>
+                    <th style="padding-left: 25px">Cena</th>
+                    <th style="padding-left: 25px">Kategoria</th>
+                    <th style="padding-left: 25px">Autorzy</th>
                 </tr>
                 <c:forEach var="book" items="${books}" >
                         <c:url var="update" value="/books/updateBookForm2">
                         <c:param name="bookId" value="${book.id}"/>
                         </c:url>
                     <tr>
-                        <td>${book.nazwa}</td>
-                        <td>${book.wydawnictwo}</td>
-                        <td>${book.cena}</td>
-                        <td>${book.kategoria.nazwa}</td>
+                        <td style="padding-left: 25px">${book.nazwa}</td>
+                        <td style="padding-left: 25px">${book.wydawnictwo}</td>
+                        <td style="padding-left: 25px">${book.cena}</td>
+                        <td style="padding-left: 25px">${book.kategoria.nazwa}</td>
 
-                        <td>
+                        <td style="padding-left: 25px">
                         <c:forEach var="author" items="${book.autorzy}">
                              ${author.imie} ${author.nazwisko} <br />
                              </c:forEach></td>
                         <td>
 
-                        <td><a href="${update}" >Edytuj</a> </td>
-
-                        <c:url var="delete" value="/books/deleteBook">
-                        <c:param name="bookId" value="${book.id}"/>
-                        </c:url>
-                        <td><a href="${delete}">Usun</a></td>
+                        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                            <td><a href="${update}" style="padding-left: 5px">Edytuj</a> </td>
+                            <c:url var="delete" value="/books/deleteBook">
+                            <c:param name="bookId" value="${book.id}"/>
+                            </c:url>
+                            <td><a href="${delete}" style="padding-left: 5px">Usun</a></td>
+                        </sec:authorize>
                     </tr>
 
                 </c:forEach>

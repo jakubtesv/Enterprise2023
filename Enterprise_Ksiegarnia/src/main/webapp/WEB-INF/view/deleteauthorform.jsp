@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>authors</title>
+    <title>Usun Autora</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>

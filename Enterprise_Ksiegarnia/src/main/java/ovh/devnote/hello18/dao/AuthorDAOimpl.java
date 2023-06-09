@@ -23,7 +23,7 @@ public class AuthorDAOimpl implements AuthorDAO{
         //sesja hibertabe
         Session currentSession = sessionFactory.getCurrentSession();
         //zapytanie
-        Query<Autor> query = currentSession.createQuery(" FROM Autor", Autor.class);
+        Query<Autor> query = currentSession.createQuery(" FROM Autor where id!=17", Autor.class);
         List<Autor> authors = query.getResultList();
 
         return authors ;
