@@ -16,6 +16,6 @@ public interface AuthorService {
 
     void deleteAuthor(Autor author);
 
-
+    Set<Autor> getNullAuthors();
 
 }

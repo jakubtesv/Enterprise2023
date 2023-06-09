@@ -46,5 +46,11 @@ public class AuthorServiceImpl implements AuthorService{
         authorDAO.deleteAuthor(author);
     }
 
+    @Override
+    @Transactional
+    public Set<Autor> getNullAuthors() {
+        return authorDAO.getNullAuthor();
+    }
+
 
 }

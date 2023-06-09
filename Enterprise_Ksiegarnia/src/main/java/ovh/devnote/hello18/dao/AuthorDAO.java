@@ -18,4 +18,6 @@ public interface AuthorDAO
 
     void deleteAuthor(Autor author);
 
+    Set<Autor> getNullAuthor();
+
 }

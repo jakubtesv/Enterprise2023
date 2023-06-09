@@ -18,6 +18,7 @@ import ovh.devnote.hello18.services.CategoryService;
 import ovh.devnote.hello18.services.CategoryServiceImpl;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/books")
@@ -40,24 +41,6 @@ public class BookController {
         return "bookslist";
     }
 
-//    @GetMapping("/bookformadd")
-//    public String addForm(Model model)
-//    {
-//        Ksiazka book = new Ksiazka();
-//        List<Kategoria> categories = categoryService.getCategories();
-//
-//        model.addAttribute("book",book);
-//        model.addAttribute("categories",categories);
-//        return "addbookform";
-//    }
-
-//    @PostMapping("/saveBook")
-//    public String saveBook(@ModelAttribute("book") Ksiazka ksiazka)
-//    {
-//        bookService.saveBook(ksiazka);
-//        return "redirect:/books/list";
-//    }
-
     @PostMapping("/saveBook2")
     public String saveBook2(@ModelAttribute("bookDTO") BookDTO bookDTO)
     {
@@ -73,7 +56,15 @@ public class BookController {
         newks.setNazwa(bookDTO.getNazwa());
         newks.setWydawnictwo(bookDTO.getWydawnictwo());
         newks.setCena(bookDTO.getCena());
-        newks.setAutorzy(authorService.getAuthorsByIds(bookDTO.getAuthorsid()));
+
+        if(bookDTO.getAuthorsid().isEmpty())
+        {
+            newks.setAutorzy(authorService.getNullAuthors());
+        }
+        else
+        {
+            newks.setAutorzy(authorService.getAuthorsByIds(bookDTO.getAuthorsid()));
+        }
 
         bookService.saveBook(newks);
         return "redirect:/books/list";

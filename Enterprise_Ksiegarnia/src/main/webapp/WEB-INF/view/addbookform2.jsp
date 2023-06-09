@@ -24,7 +24,7 @@
 
         <tr>
             <td><label>nazwa:</label></td>
-            <td><form:input path="nazwa" /></td>
+            <td><form:input path="nazwa"/></td>
         </tr>
 
         <tr>
@@ -44,7 +44,7 @@
         <tr>
 
            <td>
-               <form:select path="authorsid">
+               <form:select path="authorsid" >
                    <form:options items="${authors}" itemValue="id" itemLabel="nazwisko"/>
                </form:select>
            </td>
@@ -54,7 +54,7 @@
 
         <tr>
             <td><label></label></td>
-            <td><input type="submit" class="btn btn-success" value="Zapisz" class="save" /></td>
+            <td><input type="submit" class="btn btn-success" value="Zapisz" class="save"/></td>
         </tr>
 
 
