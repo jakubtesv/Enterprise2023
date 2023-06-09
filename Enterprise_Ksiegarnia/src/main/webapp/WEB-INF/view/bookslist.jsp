@@ -31,6 +31,13 @@
                         <td>${book.wydawnictwo}</td>
                         <td>${book.cena}</td>
                         <td>${book.kategoria.nazwa}</td>
+
+                        <td>
+                        <c:forEach var="author" items="${book.autorzy}">
+                             ${author.imie} ${author.nazwisko} <br />
+                             </c:forEach></td>
+                        <td>
+
                         <td><a href="${update}" >Edytuj</a> </td>
 
                         <c:url var="delete" value="/books/deleteBook">

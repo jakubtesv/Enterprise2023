@@ -34,11 +34,6 @@ public class BookServiceImpl implements BookService{
     @Override
     @Transactional
     public void saveBook(Ksiazka ksiazka) {
-        //List<Kategoria> kategorie = categoryDAO.getCategories();
-        //ksiazka.setKategoria(kategorie.get(0));
-//        Kategoria kategoria = ksiazka.getKategoria();
-//        kategoria.setId(Integer.parseInt(kategoria.getNazwa()));
-
         bookDAO.saveBook(ksiazka);
     }
 

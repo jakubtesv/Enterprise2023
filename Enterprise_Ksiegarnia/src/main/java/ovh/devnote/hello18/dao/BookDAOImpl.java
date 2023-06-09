@@ -27,7 +27,9 @@ public class BookDAOImpl implements BookDAO {
         //sesja hibertabe
         Session currentSession = sessionFactory.getCurrentSession();
         //zapytanie
-        Query<Ksiazka> query = currentSession.createQuery(" from Ksiazka", Ksiazka.class);
+
+
+        Query<Ksiazka> query = currentSession.createQuery("SELECT DISTINCT k from Ksiazka as k LEFT JOIN FETCH k.autorzy", Ksiazka.class);
         List<Ksiazka> books = query.getResultList();
 
         return books ;
@@ -70,7 +72,7 @@ public class BookDAOImpl implements BookDAO {
             return new HashSet<>();
         }
 
-        Query<Ksiazka> query = currentSession.createQuery(" from Ksiazka as b where k.id in (:booksId)", Ksiazka.class).setParameterList("booksId", booksId);
+        Query<Ksiazka> query = currentSession.createQuery(" from Ksiazka as k where k.id in (:booksId)", Ksiazka.class).setParameterList("booksId", booksId);
         Set<Ksiazka> books = query.getResultStream().collect(Collectors.toSet());
 
         return books;

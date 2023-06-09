@@ -42,6 +42,17 @@
         </tr>
 
         <tr>
+
+           <td>
+               <form:select path="authorsid">
+                   <form:options items="${authors}" itemValue="id" itemLabel="nazwisko"/>
+               </form:select>
+           </td>
+
+        </tr>
+
+
+        <tr>
             <td><label></label></td>
             <td><input type="submit" class="btn btn-success" value="Zapisz" class="save" /></td>
         </tr>

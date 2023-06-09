@@ -1,7 +1,9 @@
 package ovh.devnote.hello18.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,8 +34,8 @@ public class Ksiazka {
     @JoinColumn(name="kategoria_id")
     private Kategoria kategoria;
 
-
-    @ManyToMany
+//    https://stackoverflow.com/questions/22821695/how-to-fix-hibernate-lazyinitializationexception-failed-to-lazily-initialize-a
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="autorzy_to_ksiazki",
             joinColumns = @JoinColumn(name="ksiazka_id"),
@@ -103,6 +105,14 @@ public class Ksiazka {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Integer> getAuthorsIds(){
+        List<Integer> authorsIds = new ArrayList<>();
+        for (Autor a: this.autorzy) {
+            authorsIds.add(a.getId());
+        }
+        return authorsIds;
     }
 
     @Override
