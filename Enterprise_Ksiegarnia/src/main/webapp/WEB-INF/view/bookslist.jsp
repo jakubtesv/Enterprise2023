@@ -39,17 +39,33 @@
                             </c:url>
                             <td><a href="${delete}" style="padding-left: 5px">Usun</a></td>
                         </sec:authorize>
+
+                        <sec:authorize access="hasRole('USER')">
+                            <td>
+                                <form:form action="localhost:8080/helloworld/cart/add" method="post">
+                                    <input type="hidden" id="bookId" name="bookId" value="${book.id}"/>
+                                    <button type="submit" >Do koszyka</button>
+                                </form:form>
+                            </td>
+                        </sec:authorize>
+
+
                     </tr>
 
                 </c:forEach>
             </table>
         </div>
 
-        <div>
-            <input type="button" class="btn btn-secondary" value="Dodaj Ksiazke"
-                   onclick="window.location.href='formadd2';return false;" />
-        </div>
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+            <div>
+                <input type="button" class="btn btn-secondary" value="Dodaj Ksiazke"
+                       onclick="window.location.href='formadd2';return false;" />
+            </div>
+        </sec:authorize>
 
+<p>
+            <a href="${pageContext.request.contextPath}/cart "> Koszyk  </a>
+</p>
 
 </body>
 </html>

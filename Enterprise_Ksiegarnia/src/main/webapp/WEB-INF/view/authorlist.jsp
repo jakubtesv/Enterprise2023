@@ -38,11 +38,11 @@
             </table>
         </div>
 
-
-        <div>
-            <input type="button" class="btn btn-secondary" value="Dodaj Autora"
-                   onclick="window.location.href='authorformadd';return false;" />
-        </div>
-
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+            <div>
+                <input type="button" class="btn btn-secondary" value="Dodaj Autora"
+                       onclick="window.location.href='authorformadd';return false;" />
+            </div>
+        </sec:authorize>
 </body>
 </html>

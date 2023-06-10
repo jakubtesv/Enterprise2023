@@ -18,10 +18,8 @@
                             <td><c:out value="${book.kategoria.nazwa}"/></td>
 
                             <td>
-                                <form:form action="$
-                                    {pageContext.request.contextPath}/cart/delete">
-                                    <input type="hidden" id="bookId" name="bookId" value="$
-                                    {book.id}"/>
+                                <form:form action="${pageContext.request.contextPath}/cart/delete">
+                                    <input type="hidden" id="bookId" name="bookId" value="${book.id}"/>
                                     <button type="submit">Usun</button>
                                 </form:form>
                             </td>
@@ -32,7 +30,7 @@
         </div>
 
 <p>
-    <a href="${pageContext.request.contextPath}/books/list "> return </a>
+    <a href="${pageContext.request.contextPath}/books/list "> Powrot </a>
 </p>
 
 </body>
