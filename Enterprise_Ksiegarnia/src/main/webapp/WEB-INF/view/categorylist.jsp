@@ -9,9 +9,6 @@
 
         <div>
             <table>
-                <tr>
-                    <th>Name</th>
-                </tr>
                 <c:forEach var="category" items="${categories}" >
                     <tr>
                         <td>${category.nazwa}</td>
@@ -21,7 +18,7 @@
         </div>
 
         <div>
-            <input type="button" value="Add Category"
+            <input type="button" class="btn btn-secondary" value="Dodaj Katerogie"
                    onclick="window.location.href='addCategory';return false;" />
         </div>
 </body>

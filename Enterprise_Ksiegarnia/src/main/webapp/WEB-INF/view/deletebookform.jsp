@@ -1,21 +1,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Usuń ksiazke</title>
+    <title>Usun Ksiazke</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
 <form:form action="deleteBook" modelAttribute="book" method="POST">
-    <td>${book.nazwa}</td>
-    <td>${book.cena}</td>
-    <td>${book.wydawnictwo}</td>
-    <td>${book.kategoria.nazwa}</td>
     <td><form:hidden path="id"/></td>
+    <tr>
+                <td>Czy chcesz usunac ksiazke "${book.nazwa} ${book.wydawnictwo} ${book.cena} ${book.kategoria.nazwa}"?</td>
+    </tr>
+
+
     <table>
         <tr>
             <td><label></label></td>
-            <td><input type="submit" class="btn btn-danger" value="USUN"  /></td>
+            <td><input type="submit" class="btn btn-danger" value="USUN"/></td>
         </tr>
     </table>
 </form:form>

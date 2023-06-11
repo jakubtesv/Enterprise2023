@@ -33,11 +33,11 @@
                         <td>
 
                         <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                            <td><a href="${update}" style="padding-left: 5px">Edytuj</a> </td>
+                            <td><a href="${update}" class="btn btn-outline-primary" style="padding-left: 5px">Edytuj</a> </td>
                             <c:url var="delete" value="/books/deleteBook">
                             <c:param name="bookId" value="${book.id}"/>
                             </c:url>
-                            <td><a href="${delete}" style="padding-left: 5px">Usun</a></td>
+                            <td><a href="${delete}" class="btn btn-outline-danger" style="padding-left: 5px">Usun</a></td>
                         </sec:authorize>
 
                         <sec:authorize access="hasRole('USER')">

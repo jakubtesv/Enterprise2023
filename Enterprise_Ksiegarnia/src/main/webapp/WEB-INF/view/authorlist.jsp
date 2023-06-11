@@ -23,16 +23,15 @@
                                   <c:url var="update" value="/authors/updateAuthor">
                                       <c:param name="authorId" value="${autor.id}"/>
                                   </c:url>
-                                  <a href="${update}" style="padding-left: 5px">Edytuj</a>
+                                  <a href="${update}" class="btn btn-outline-primary" style="padding-left: 5px">Edytuj</a>
                               </td>
                               <td>
                                   <c:url var="delete" value="/authors/deleteAuthor">
                                        <c:param name="authorId" value="${autor.id}"/>
                                   </c:url>
-                                  <a href="${delete}" style="padding-left: 5px">Usun</a>
+                                  <a href="${delete}" class="btn btn-outline-danger" style="padding-left: 5px">Usun</a>
                               </td>
                         </sec:authorize>
-
                     </tr>
                 </c:forEach>
             </table>

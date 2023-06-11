@@ -18,7 +18,7 @@
 
         <tr>
             <td><label></label></td>
-            <td><input type="submit" value="Save" class="save" /></td>
+            <td><input type="submit" class="btn btn-success" value="Zapisz" class="save"/></td>
         </tr>
 
 
@@ -30,7 +30,7 @@
 
 
 <p>
-    <a href="${pageContext.request.contextPath}/categories/list "> return  </a>
+    <a href="${pageContext.request.contextPath}/books/list " class="btn btn-primary"> Powrot  </a>
 </p>
 </body>
 </html>

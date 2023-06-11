@@ -17,7 +17,7 @@
 
         <tr>
             <td><label></label></td>
-            <td><input type="submit" value="Delete"  /></td>
+            <td><input type="submit" class="btn btn-danger" value="USUN"/></td>
         </tr>
 
 
@@ -27,9 +27,8 @@
 
 </form:form>
 
-
 <p>
-    <a href="${pageContext.request.contextPath}/authors/list "> return  </a>
+    <a href="${pageContext.request.contextPath}/authors/list " class="btn btn-primary"> Powrot  </a>
 </p>
 </body>
 </html>
