@@ -42,11 +42,11 @@
 
                         <sec:authorize access="hasRole('USER')">
                             <td>
-                                <form:form action="${pageContext.request.contextPath}/cart/add" method="post">
-                                    <input type="hidden" id="bookId" name="bookId" value="${book.id}"/>
+                                <form action="${pageContext.request.contextPath}/cart/add" method="post">
+                                    <input type="hidden" name="bookId" value="${book.id}"/>
                                     <button type="submit">Do koszyka</button>
-                                </form:form>
-                            </td>
+                                </form>
+                            </td
                         </sec:authorize>
 
 
@@ -63,9 +63,6 @@
             </div>
         </sec:authorize>
 
-<p>
-            <a href="${pageContext.request.contextPath}/cart "> Koszyk  </a>
-</p>
 
 </body>
 </html>

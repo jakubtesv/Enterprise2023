@@ -42,6 +42,11 @@
             <a href="${pageContext.request.contextPath}/register" class="btn btn-primary" style="margin-left: 10px">Rejestracja</a>
         </sec:authorize>
 
+        <sec:authorize access="hasAuthority('ROLE_USER')">
+           <a href="${pageContext.request.contextPath}/cart" class="btn btn-primary" style="margin-left: 10px">Koszyk</a>
+        </sec:authorize>
+
+
         <sec:authorize access="isAuthenticated()">
            <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary" style="margin-left: 10px">Wyloguj</a>
         </sec:authorize>

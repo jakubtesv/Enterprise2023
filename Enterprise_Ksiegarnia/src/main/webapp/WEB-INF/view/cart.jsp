@@ -18,11 +18,13 @@
                             <td><c:out value="${book.kategoria.nazwa}"/></td>
 
                             <td>
-                                <form:form action="${pageContext.request.contextPath}/cart/delete">
-                                    <input type="hidden" id="bookId" name="bookId" value="${book.id}"/>
+                                <form action="${pageContext.request.contextPath}/cart/delete" method="post">
+                                    <input type="hidden" name="bookId" value="${book.id}"/>
                                     <button type="submit">Usun</button>
-                                </form:form>
+                                </form>
                             </td>
+
+
                         </tr>
                     </c:forEach>
                 </tbody>

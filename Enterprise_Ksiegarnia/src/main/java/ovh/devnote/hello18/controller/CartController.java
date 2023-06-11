@@ -10,7 +10,6 @@ import ovh.devnote.hello18.component.Cart;
 import ovh.devnote.hello18.services.BookService;
 
 @Controller
-@RequestMapping("/cart")
 public class CartController {
     private final Cart cart;
     private final BookService bookService;
@@ -20,15 +19,33 @@ public class CartController {
         this.bookService = bookService;
     }
 
-    @GetMapping
+    @GetMapping("/cart")
     public String cart(Model model) {
         model.addAttribute("books", bookService.getBooksByIds(cart.getBookIds()));
         return "cart";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/cart/add")
     public String addToCart(@RequestParam(name = "bookId") int id) {
-        cart.addBookId(id);
+
+        //dodawanie tylko 1 pozycji ksiazki
+        if (cart.getBookIds().contains(id)) {
+
+        }
+        else
+        {
+            cart.addBookId(id);
+        }
+        return "redirect:/books/list";
+    }
+
+
+    @PostMapping("/cart/delete")
+    public String removeFromCart(@RequestParam("bookId") int id) {
+        cart.deleteBookId(id);
         return "redirect:/cart";
     }
+
+
+
 }
