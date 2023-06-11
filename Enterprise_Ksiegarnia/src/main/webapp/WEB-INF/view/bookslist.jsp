@@ -42,9 +42,9 @@
 
                         <sec:authorize access="hasRole('USER')">
                             <td>
-                                <form:form action="localhost:8080/helloworld/cart/add" method="post">
+                                <form:form action="${pageContext.request.contextPath}/cart/add" method="post">
                                     <input type="hidden" id="bookId" name="bookId" value="${book.id}"/>
-                                    <button type="submit" >Do koszyka</button>
+                                    <button type="submit">Do koszyka</button>
                                 </form:form>
                             </td>
                         </sec:authorize>
