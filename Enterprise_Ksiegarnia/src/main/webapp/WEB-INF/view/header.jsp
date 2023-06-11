@@ -43,7 +43,7 @@
         </sec:authorize>
 
         <sec:authorize access="hasAuthority('ROLE_USER')">
-           <a href="${pageContext.request.contextPath}/cart" class="btn btn-primary" style="margin-left: 10px">Koszyk</a>
+           <a href="${pageContext.request.contextPath}/cart" class="btn btn-success" style="margin-left: 10px">Koszyk</a>
         </sec:authorize>
 
 

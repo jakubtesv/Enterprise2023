@@ -36,7 +36,7 @@ public class CartController {
         {
             cart.addBookId(id);
         }
-        return "redirect:/books/list";
+        return "redirect:/cart";
     }
 
 

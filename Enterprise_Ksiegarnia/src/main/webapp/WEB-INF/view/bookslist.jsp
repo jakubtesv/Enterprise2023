@@ -44,7 +44,7 @@
                             <td>
                                 <form action="${pageContext.request.contextPath}/cart/add" method="post">
                                     <input type="hidden" name="bookId" value="${book.id}"/>
-                                    <button type="submit">Do koszyka</button>
+                                    <button type="submit" class="btn btn-secondary">Do koszyka</button>
                                 </form>
                             </td
                         </sec:authorize>
