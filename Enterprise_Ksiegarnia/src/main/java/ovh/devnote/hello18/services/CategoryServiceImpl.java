@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService
 
     @Override
     @Transactional
-    public void saveCategory(Kategoria category) {
-
+    public void saveCategory(Kategoria kategoria) {
+        categoryDAO.saveCategory(kategoria);
     }
 }

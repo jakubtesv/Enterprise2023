@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import ovh.devnote.hello18.dto.BookDTO;
+import ovh.devnote.hello18.entity.Autor;
 import ovh.devnote.hello18.entity.Kategoria;
 import ovh.devnote.hello18.entity.Ksiazka;
+import ovh.devnote.hello18.services.AuthorService;
 import ovh.devnote.hello18.services.BookService;
 import ovh.devnote.hello18.services.CategoryService;
 import ovh.devnote.hello18.services.CategoryServiceImpl;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/books")
@@ -25,6 +28,10 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private AuthorService authorService;
+
     //@RequestMapping("/list")
     @GetMapping("/list")
     public String listCustomers(Model model)
@@ -32,24 +39,6 @@ public class BookController {
         List<Ksiazka> books = bookService.getBooks();
         model.addAttribute("books",books);
         return "bookslist";
-    }
-
-    @GetMapping("/bookformadd")
-    public String addForm(Model model)
-    {
-        Ksiazka book = new Ksiazka();
-        List<Kategoria> categories = categoryService.getCategories();
-
-        model.addAttribute("book",book);
-        model.addAttribute("categories",categories);
-        return "addbookform";
-    }
-
-    @PostMapping("/saveBook")
-    public String saveBook(@ModelAttribute("book") Ksiazka ksiazka)
-    {
-        bookService.saveBook(ksiazka);
-        return "redirect:/books/list";
     }
 
     @PostMapping("/saveBook2")
@@ -61,14 +50,22 @@ public class BookController {
             newks = new Ksiazka();
         }
 
-//        Ksiazka  newks = new Ksiazka();
 
-//        newks.setId(bookDTO.getId());
         Kategoria kat = categoryService.getCategory(bookDTO.getKategoriaid());
         newks.setKategoria(kat);
         newks.setNazwa(bookDTO.getNazwa());
         newks.setWydawnictwo(bookDTO.getWydawnictwo());
         newks.setCena(bookDTO.getCena());
+
+        if(bookDTO.getAuthorsid().isEmpty())
+        {
+            newks.setAutorzy(authorService.getNullAuthors());
+        }
+        else
+        {
+            newks.setAutorzy(authorService.getAuthorsByIds(bookDTO.getAuthorsid()));
+        }
+
         bookService.saveBook(newks);
         return "redirect:/books/list";
     }
@@ -78,6 +75,7 @@ public class BookController {
         BookDTO bookDTO = new BookDTO();
         model.addAttribute("bookDTO", bookDTO);
         model.addAttribute("categories", categoryService.getCategories());
+        model.addAttribute("authors", authorService.getAuthors());
         return "addbookform2";
     }
 
@@ -91,12 +89,14 @@ public class BookController {
             bookDTO.setWydawnictwo(ksiazka.getWydawnictwo());
             bookDTO.setNazwa(ksiazka.getNazwa());
             bookDTO.setKategoriaid(ksiazka.getKategoria().getId());
+            bookDTO.setAuthorsid(ksiazka.getAuthorsIds());
         }
         model.addAttribute("bookDTO",bookDTO);
         List<Kategoria> categories = categoryService.getCategories();
         model.addAttribute("categories", categories);
-        //authors
-        //a
+        List<Autor> authors = authorService.getAuthors();
+        model.addAttribute("authors", authors);
+
         return "addbookform2";
     }
 

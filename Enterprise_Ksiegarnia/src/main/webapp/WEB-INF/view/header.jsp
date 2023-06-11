@@ -28,6 +28,12 @@
                   <a class="nav-link" href="${pageContext.request.contextPath}/authors/list">Autorzy</a>
           </li>
       </sec:authorize>
+      <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/categories/list">Kategorie</a>
+          </li>
+      </sec:authorize>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
 
@@ -35,6 +41,11 @@
             <a href="${pageContext.request.contextPath}/login" class="btn btn-primary" style="margin-left: 10px">Logowanie</a>
             <a href="${pageContext.request.contextPath}/register" class="btn btn-primary" style="margin-left: 10px">Rejestracja</a>
         </sec:authorize>
+
+        <sec:authorize access="hasAuthority('ROLE_USER')">
+           <a href="${pageContext.request.contextPath}/cart" class="btn btn-success" style="margin-left: 10px">Koszyk</a>
+        </sec:authorize>
+
 
         <sec:authorize access="isAuthenticated()">
            <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary" style="margin-left: 10px">Wyloguj</a>
