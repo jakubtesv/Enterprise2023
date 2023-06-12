@@ -15,5 +15,13 @@ Aby przegladac baze naszych ksiazek zaloguj sie! Nie masz jeszcze konta? <a href
 </div>
 </sec:authorize>
 
+<sec:authorize access="isAuthenticated()">
+<div>
+Uzywaj nav bar'a aby przemieszczac sie po stronie!
+</div>
+</sec:authorize>
+
+
+
 </body>
 </html>
