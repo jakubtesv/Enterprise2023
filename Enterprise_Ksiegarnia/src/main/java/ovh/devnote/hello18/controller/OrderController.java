@@ -1,6 +1,5 @@
 package ovh.devnote.hello18.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +12,9 @@ import ovh.devnote.hello18.entity.User;
 import ovh.devnote.hello18.services.BookService;
 import ovh.devnote.hello18.services.OrderService;
 
+import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -48,22 +48,31 @@ public class OrderController {
 
         orderService.saveOrder(order);
         cart.getBookIds().clear();
-        return "redirect:/home";
+        return "cart";
     }
 
     @PostMapping("/completeOrder")
     public String completeOrder(@RequestParam(name = "orderId") int id) {
         orderService.completeOrder(id);
-        return "redirect:/orders";
+        return "redirect:/adminOrdersList";
     }
 
-    @GetMapping("/orderList")
+    @GetMapping("/adminOrdersList")
     public String orderList(Model model)
     {
         List<Order> orders = orderService.getOrders();
         model.addAttribute("orders",orders);
-        return "orders";
+        return "adminorderslist";
     }
 
+
+    @GetMapping("/userOrdersList")
+    public String orderList(Authentication authentication, Model model)
+    {
+        List<Order> orders = orderService.getOrders(authentication.getName());
+
+        model.addAttribute("orders",orders);
+        return "userorderslist";
+    }
 
 }

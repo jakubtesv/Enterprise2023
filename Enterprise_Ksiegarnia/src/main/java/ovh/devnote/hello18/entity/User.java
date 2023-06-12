@@ -55,4 +55,10 @@ public class User {
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
     }
+
+    @Override
+    public String toString() {
+        return username;
+    }
+
 }

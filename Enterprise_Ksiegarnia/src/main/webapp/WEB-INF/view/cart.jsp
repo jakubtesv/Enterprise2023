@@ -26,7 +26,7 @@
                                 </c:forEach></td>
                             <td>
 
-                            <td>
+                            <td style="padding-left: 25px">
                                 <form action="${pageContext.request.contextPath}/cart/delete" method="post">
                                     <input type="hidden" name="bookId" value="${book.id}"/>
                                     <button type="submit" class="btn btn-secondary">Usun</button>
@@ -48,7 +48,7 @@
                 <div style="padding-left: 25px">
                     <form action="${pageContext.request.contextPath}/addOrder" method="post">
                         <input type="hidden" name="count" value="${count}"/>
-                        <button type="submit" class="btn btn-secondary">Zamow</button>
+                        <button type="submit" class="btn btn-success">Zamow</button>
                     </form>
                 </div>
             </div>

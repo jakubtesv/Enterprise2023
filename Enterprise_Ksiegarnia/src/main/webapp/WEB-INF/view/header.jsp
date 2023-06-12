@@ -34,6 +34,20 @@
           </li>
       </sec:authorize>
 
+
+      <sec:authorize access="hasAuthority('ROLE_USER')">
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/userOrdersList">Zamowienia</a>
+          </li>
+      </sec:authorize>
+      <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/adminOrdersList">Zamowienia</a>
+          </li>
+      </sec:authorize>
+
+
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
 

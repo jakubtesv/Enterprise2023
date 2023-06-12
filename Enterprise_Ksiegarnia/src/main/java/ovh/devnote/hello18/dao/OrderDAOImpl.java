@@ -5,9 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ovh.devnote.hello18.entity.Autor;
-import ovh.devnote.hello18.entity.Ksiazka;
 import ovh.devnote.hello18.entity.Order;
+import ovh.devnote.hello18.entity.User;
 
 import java.util.List;
 
@@ -30,8 +29,13 @@ public class OrderDAOImpl implements OrderDAO{
     public List<Order> getOrders(String username) {
         Session currentSession = sessionFactory.getCurrentSession();
 
-        Query<Order> query = currentSession.createQuery(" FROM Order where username=:username", Order.class);
-        List<Order> orders = query.getResultList();
+        Query<User> queryuser = currentSession.createQuery(" from User WHERE username=:username", User.class)
+                .setParameter("username", username);
+        List<User> users = queryuser.getResultList();
+        User user = users.get(0);
+
+        Query<Order> queryuserorder = currentSession.createQuery(" FROM Order O WHERE O.user=:user", Order.class).setParameter("user", user);
+        List<Order> orders = queryuserorder.getResultList();
 
         return orders;
     }
