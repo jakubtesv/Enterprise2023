@@ -15,10 +15,6 @@ public class Kategoria {
         this.nazwa = nazwa;
     }
 
-//    public Kategoria(String id) {
-//        this.id = Integer.parseInt(id);
-//    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")

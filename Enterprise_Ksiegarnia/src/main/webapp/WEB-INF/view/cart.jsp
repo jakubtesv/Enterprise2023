@@ -26,7 +26,7 @@
                                 </c:forEach></td>
                             <td>
 
-                            <td>
+                            <td style="padding-left: 25px">
                                 <form action="${pageContext.request.contextPath}/cart/delete" method="post">
                                     <input type="hidden" name="bookId" value="${book.id}"/>
                                     <button type="submit" class="btn btn-secondary">Usun</button>
@@ -39,11 +39,22 @@
                 </tbody>
                 </table>
         </div>
-        <div>
+        </br></br>
+        <c:if test="${count > 0}">
+            <div style="display: flex">
+                <div>
+                    <h4>Suma Twojego zamowienia wynosi: <fmt:formatNumber type="number" maxFractionDigits="2" value="${count}"/>   </h4>
+                </div>
+                <div style="padding-left: 25px">
+                    <form action="${pageContext.request.contextPath}/addOrder" method="post">
+                        <input type="hidden" name="count" value="${count}"/>
+                        <button type="submit" class="btn btn-success">Zamow</button>
+                    </form>
+                </div>
+            </div>
+        </c:if>
 
-        <h4>Suma Twojego zamowienia wynosi: <fmt:formatNumber type="number" maxFractionDigits="2" value="${count}"/>   </h4>
-
-        </div>
+</br>
 <div>
     <a href="${pageContext.request.contextPath}/books/list" class="btn btn-secondary"> Powrot </a>
  </div>

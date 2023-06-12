@@ -32,7 +32,6 @@ public class BookController {
     @Autowired
     private AuthorService authorService;
 
-    //@RequestMapping("/list")
     @GetMapping("/list")
     public String listCustomers(Model model)
     {
