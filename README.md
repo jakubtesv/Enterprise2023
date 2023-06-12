@@ -16,7 +16,7 @@ Enterprise2023 jest projektem skupiającym się na prostej implementacji księga
 * Usuwanie książek z koszyka przez użytkownika 
 
 ## Jak wyglądam
-<img src="https://github.com/jakubtesv/Enterprise2023/blob/main/readme_image.PNG" alt="booklist" style="max-width: 100%;width: 620px;">
+<img src="https://github.com/jakubtesv/Enterprise2023/blob/main/readme_image.PNG" alt="booklist" style="max-width: 100%;width: 850px;">
 
 ## Sekcja developerska
 ### Tomcat 9.0.75:
