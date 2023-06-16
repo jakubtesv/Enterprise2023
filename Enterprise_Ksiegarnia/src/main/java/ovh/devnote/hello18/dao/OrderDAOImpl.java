@@ -19,11 +19,13 @@ public class OrderDAOImpl implements OrderDAO{
     @Override
     public List<Order> getOrders() {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query<Order> query = currentSession.createQuery(" FROM Order", Order.class);
+        Query<Order> query = currentSession.createQuery("select distinct o from Order o left join fetch o.ksiazki " +
+                "order by o.date_time desc", Order.class);
         List<Order> orders = query.getResultList();
 
         return orders;
     }
+
 
     @Override
     public List<Order> getOrders(String username) {
@@ -34,11 +36,14 @@ public class OrderDAOImpl implements OrderDAO{
         List<User> users = queryuser.getResultList();
         User user = users.get(0);
 
-        Query<Order> queryuserorder = currentSession.createQuery(" FROM Order O WHERE O.user=:user", Order.class).setParameter("user", user);
+        Query<Order> queryuserorder = currentSession.createQuery("select distinct o from Order o left join fetch o.ksiazki " +
+                        "where o.user.username=:username order by o.date_time desc", Order.class)
+                .setParameter("username", username);
         List<Order> orders = queryuserorder.getResultList();
 
         return orders;
     }
+
 
     @Override
     public void saveOrder(Order order) {

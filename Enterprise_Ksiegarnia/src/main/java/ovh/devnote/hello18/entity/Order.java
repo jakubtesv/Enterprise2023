@@ -42,7 +42,7 @@ public class Order {
     @JoinColumn(name="username")
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany//(fetch = FetchType.EAGER)
     @JoinTable(
             name="zamowienia_to_ksiazki",
             joinColumns = @JoinColumn(name="order_id"),
@@ -50,7 +50,6 @@ public class Order {
 
     )
     private Set<Ksiazka> ksiazki;
-
 
 
 
@@ -110,5 +109,8 @@ public class Order {
 
     public void setKsiazki(Set<Ksiazka> ksiazki) {
         this.ksiazki = ksiazki;
+        for(Ksiazka ksiazka : ksiazki){
+            ksiazka.addOrder(this);
+        }
     }
 }

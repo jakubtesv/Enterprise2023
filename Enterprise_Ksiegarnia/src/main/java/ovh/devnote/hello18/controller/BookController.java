@@ -9,13 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import ovh.devnote.hello18.dto.BookDTO;
-import ovh.devnote.hello18.entity.Autor;
-import ovh.devnote.hello18.entity.Kategoria;
-import ovh.devnote.hello18.entity.Ksiazka;
-import ovh.devnote.hello18.services.AuthorService;
-import ovh.devnote.hello18.services.BookService;
-import ovh.devnote.hello18.services.CategoryService;
-import ovh.devnote.hello18.services.CategoryServiceImpl;
+import ovh.devnote.hello18.entity.*;
+import ovh.devnote.hello18.services.*;
 
 import java.util.List;
 import java.util.Set;
@@ -31,6 +26,7 @@ public class BookController {
 
     @Autowired
     private AuthorService authorService;
+
 
     @GetMapping("/list")
     public String listCustomers(Model model)
@@ -102,15 +98,29 @@ public class BookController {
     @GetMapping("/deleteBook")
     public String deleteBookForm(@RequestParam("bookId") int id, Model model){
         Ksiazka ksiazka = bookService.getBook(id);
+
         model.addAttribute("book", ksiazka);
         return "deletebookform";
     }
 
     @PostMapping("/deleteBook")
-    public String deleteBook(@ModelAttribute("book") Ksiazka ksiazka){
-        bookService.deleteBook(ksiazka);
-        return "redirect:/books/list";
+    public String deleteBook(@ModelAttribute("book") Ksiazka ksiazka, Model model){
+
+
+        if(bookService.waliduj(ksiazka))
+        {
+            bookService.deleteBook(ksiazka);
+            return "redirect:/books/list";
+        }
+        else
+        {
+            return "error";
+        }
     }
+
+
+
+
 
 
 }

@@ -55,4 +55,12 @@ public class BookServiceImpl implements BookService{
         return bookDAO.getBooksByIds(ids);
     }
 
+    @Override
+    @Transactional
+    public boolean waliduj(Ksiazka ksiazka) {
+        return bookDAO.waliduj(ksiazka);
+
+    }
+
+
 }

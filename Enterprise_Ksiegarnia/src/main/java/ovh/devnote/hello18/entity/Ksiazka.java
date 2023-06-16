@@ -35,7 +35,7 @@ public class Ksiazka {
     private Kategoria kategoria;
 
 //    https://stackoverflow.com/questions/22821695/how-to-fix-hibernate-lazyinitializationexception-failed-to-lazily-initialize-a
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER) //, cascade = CascadeType.ALL
     @JoinTable(
             name="autorzy_to_ksiazki",
             joinColumns = @JoinColumn(name="ksiazka_id"),
@@ -43,6 +43,12 @@ public class Ksiazka {
 
     )
     private Set<Autor> autorzy;
+
+
+
+    @ManyToMany(mappedBy = "ksiazki")
+    private Set<Order> orders;
+
     public void addAutor(Autor autor){
         if (autorzy == null)
             autorzy = new HashSet<>();
@@ -54,9 +60,8 @@ public class Ksiazka {
              return;
         //autor.addKsiazka(this);
         autorzy.remove(autor);
-
-
     }
+
 
     public String getNazwa() {
         return nazwa;
@@ -124,5 +129,18 @@ public class Ksiazka {
                 ", cena=" + cena +
                 ", kategoria=" + kategoria +
                 '}';
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void addOrder(Order order)
+    {
+        orders.add(order);
     }
 }
