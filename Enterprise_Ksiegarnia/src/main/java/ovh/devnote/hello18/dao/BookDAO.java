@@ -17,4 +17,7 @@ public interface BookDAO {
     Set<Ksiazka> getBooksByAuthor(Autor autor);
 
     Set<Ksiazka> getBooksByIds(List<Integer> booksId);
+
+    boolean waliduj(Ksiazka ksiazka);
+
 }

@@ -6,11 +6,10 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ovh.devnote.hello18.entity.Autor;
-import ovh.devnote.hello18.entity.Kategoria;
-import ovh.devnote.hello18.entity.Ksiazka;
+import ovh.devnote.hello18.entity.*;
 
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -54,6 +53,7 @@ public class BookDAOImpl implements BookDAO {
         session.delete(book);
     }
 
+
     @Override
     public Set<Ksiazka> getBooksByAuthor(Autor autor) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -77,5 +77,28 @@ public class BookDAOImpl implements BookDAO {
 
         return books;
     }
+
+    public boolean waliduj(Ksiazka ksiazka)
+    {
+        Session currentSession = sessionFactory.getCurrentSession();
+        int id_ksiazki = ksiazka.getId();
+
+        String hqlQuery = "SELECT o FROM Order o JOIN o.ksiazki k WHERE k.id = :id_ksiazki";
+        List<Order> orders = currentSession.createQuery(hqlQuery, Order.class)
+                .setParameter("id_ksiazki", id_ksiazki)
+                .getResultList();
+
+        if(orders.isEmpty())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
 
 }

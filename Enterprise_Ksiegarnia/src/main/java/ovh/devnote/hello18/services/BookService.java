@@ -18,4 +18,7 @@ public interface BookService {
     Set<Ksiazka> getBooksByAuthor(Autor author);
 
     Set<Ksiazka> getBooksByIds(List<Integer> ids);
+
+    boolean waliduj(Ksiazka ksiazka);
+
 }
